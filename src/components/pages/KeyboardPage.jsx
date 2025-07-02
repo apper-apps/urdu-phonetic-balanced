@@ -450,7 +450,8 @@ return (
           </>
         )}
       </AnimatePresence>
-    </>
+</>
   );
+};
 
 export default KeyboardPage;
