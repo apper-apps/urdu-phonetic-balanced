@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import 'react-toastify/dist/ReactToastify.css';
+
+@layer base {
+  html {
+    font-family: Inter, system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-gray-50 text-gray-900;
+    font-family: Inter, system-ui, sans-serif;
+  }
+  
+  .urdu-text {
+    font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif;
+    direction: rtl;
+    text-align: right;
+    unicode-bidi: bidi-override;
+  }
+}
+
+@layer components {
+  .keyboard-key {
+    @apply bg-white border border-gray-200 rounded shadow-key hover:shadow-md hover:bg-gray-50 
+           active:shadow-key-pressed active:transform active:scale-95 
+           transition-all duration-100 ease-out
+           flex flex-col items-center justify-center
+           text-center font-medium
+           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-1;
+  }
+  
+  .keyboard-key:active {
+    animation: key-press 100ms ease-out;
+  }
+  
+  .function-key {
+    @apply keyboard-key bg-gray-100 hover:bg-gray-200 text-gray-700;
+  }
+  
+  .urdu-textarea {
+    @apply w-full p-6 border-2 border-primary-200 rounded-lg shadow-textarea
+           bg-white text-urdu-xl urdu-text
+           focus:outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-100
+           resize-none transition-all duration-200;
+    min-height: 200px;
+    line-height: 1.8;
+  }
+}
+
+/* Toast customizations */
+.Toastify__toast-container {
+  @apply text-sm;
+}
+
+.Toastify__toast {
+  @apply rounded-lg shadow-lg;
+}
+
+.Toastify__toast--success {
+  @apply bg-primary-500;
+}
+
+.Toastify__toast--error {
+  @apply bg-red-500;
+}
+
+.Toastify__toast--info {
+  @apply bg-blue-500;
+}
+
+.Toastify__toast--warning {
+  @apply bg-yellow-500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .keyboard-key {
+    @apply text-sm px-1 py-2;
+    min-height: 45px;
+  }
+  
+  .urdu-textarea {
+    @apply p-4 text-urdu-lg;
+    min-height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .keyboard-key {
+    @apply text-xs px-1 py-1.5;
+    min-height: 40px;
+  }
+  
+  .urdu-textarea {
+    @apply text-urdu-base;
+    min-height: 120px;
+  }
+}
