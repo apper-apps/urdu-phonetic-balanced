@@ -1,10 +1,11 @@
-import { useState, useEffect, useCallback } from 'react';
-import { phoneticMapping } from '@/services/mockData/phoneticMapping';
+import { useCallback, useEffect, useState } from "react";
+import { phoneticMapping } from "@/services/mockData/phoneticMapping";
 
 export const useKeyboard = (initialText = '') => {
   const [text, setText] = useState(initialText);
   const [cursorPosition, setCursorPosition] = useState(0);
-
+  const [isShiftActive, setIsShiftActive] = useState(false);
+  const [isCapsLockActive, setIsCapsLockActive] = useState(false);
   const insertCharacter = useCallback((char, position = text.length) => {
     const newText = text.slice(0, position) + char + text.slice(position);
     setText(newText);
@@ -28,7 +29,15 @@ export const useKeyboard = (initialText = '') => {
       return insertCharacter(mapping.urdu);
     }
     return insertCharacter(englishChar);
-  }, [insertCharacter]);
+}, [insertCharacter]);
+
+  const toggleShift = useCallback(() => {
+    setIsShiftActive(prev => !prev);
+  }, []);
+
+  const toggleCapsLock = useCallback(() => {
+    setIsCapsLockActive(prev => !prev);
+  }, []);
 
   const clearText = useCallback(() => {
     setText('');
@@ -39,8 +48,7 @@ export const useKeyboard = (initialText = '') => {
     setText(newText);
     setCursorPosition(newText.length);
   }, []);
-
-  return {
+return {
     text,
     setText,
     cursorPosition,
@@ -50,5 +58,11 @@ export const useKeyboard = (initialText = '') => {
     handlePhoneticInput,
     clearText,
     replaceText,
+    isShiftActive,
+    setIsShiftActive,
+    isCapsLockActive,
+    setIsCapsLockActive,
+    toggleShift,
+    toggleCapsLock,
   };
 };

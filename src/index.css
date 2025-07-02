@@ -4,13 +4,28 @@
 @import 'react-toastify/dist/ReactToastify.css';
 
 @layer base {
+  :root {
+    --font-size-multiplier: 1;
+    --bg-primary: 249 250 251;
+    --text-primary: 17 24 39;
+    --accent-color: 76 175 80;
+  }
+  
+  [data-theme="dark"] {
+    --bg-primary: 17 24 39;
+    --text-primary: 249 250 251;
+    --accent-color: 129 199 132;
+  }
+  
   html {
     font-family: Inter, system-ui, sans-serif;
   }
   
   body {
-    @apply bg-gray-50 text-gray-900;
+    background-color: rgb(var(--bg-primary));
+    color: rgb(var(--text-primary));
     font-family: Inter, system-ui, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   
   .urdu-text {
@@ -86,6 +101,33 @@
     min-height: 150px;
   }
 }
+/* Settings Panel Styles */
+.settings-panel {
+  @apply fixed top-0 right-0 h-full w-80 bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-out;
+}
+
+.settings-panel.open {
+  transform: translateX(0);
+}
+
+.settings-panel.closed {
+  transform: translateX(100%);
+}
+
+/* Dynamic Font Sizing */
+.dynamic-font {
+  font-size: calc(var(--base-size, 1rem) * var(--font-size-multiplier));
+}
+
+/* Caps Lock Indicator */
+.caps-lock-active {
+  @apply bg-yellow-100 border-yellow-300 text-yellow-800;
+}
+
+/* Shift Key Active */
+.shift-active {
+  @apply bg-blue-100 border-blue-300 text-blue-800;
+}
 
 @media (max-width: 480px) {
   .keyboard-key {
@@ -96,5 +138,9 @@
   .urdu-textarea {
     @apply text-urdu-base;
     min-height: 120px;
+  }
+  
+  .settings-panel {
+    @apply w-full;
   }
 }

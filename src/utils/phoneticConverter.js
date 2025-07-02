@@ -78,7 +78,6 @@ export const isUrduText = (text) => {
 export const getTextDirection = (text) => {
   return isUrduText(text) ? 'rtl' : 'ltr';
 };
-
 export const formatUrduText = (text) => {
   if (!text) return '';
   
@@ -86,4 +85,48 @@ export const formatUrduText = (text) => {
   return text
     .replace(/\s+/g, ' ') // Normalize spaces
     .trim();
+};
+
+export const getShiftCharacter = (englishChar) => {
+  const shiftMappings = {
+    // Numbers to symbols
+    '1': '!',
+    '2': '@',
+    '3': '#',
+    '4': '$',
+    '5': '%',
+    '6': '^',
+    '7': '&',
+    '8': '*',
+    '9': '(',
+    '0': ')',
+    // Special Urdu characters for Shift combinations
+    'a': 'آ', // Alif with Madda
+    'i': 'إ', // Alif with Hamza below
+    'u': 'ؤ', // Waw with Hamza
+    'e': 'ئ', // Yeh with Hamza
+    'h': 'ح', // Heh
+    's': 'ص', // Sad
+    'd': 'ض', // Dad
+    't': 'ط', // Tah
+    'z': 'ظ', // Zah
+    'g': 'غ', // Ghain
+    'f': 'ف', // Feh
+    'q': 'ق', // Qaf
+    'k': 'ک', // Kaf
+    'l': 'ل', // Lam
+    'n': 'ں', // Noon Ghunna
+  };
+  
+  return shiftMappings[englishChar.toLowerCase()] || englishChar.toUpperCase();
+};
+
+export const getCharacterStats = (text) => {
+  if (!text) return { characters: 0, words: 0, lines: 0 };
+  
+  const characters = text.length;
+  const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+  const lines = text.split('\n').length;
+  
+  return { characters, words, lines };
 };

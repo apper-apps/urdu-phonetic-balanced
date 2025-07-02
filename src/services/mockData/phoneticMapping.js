@@ -97,7 +97,72 @@ export const commonWords = {
   'beautiful': 'خوبصورت',
   'love': 'محبت',
   'peace': 'امن',
-  'hope': 'امید',
+'hope': 'امید',
   'happiness': 'خوشی',
   'sadness': 'غم'
+};
+
+// Shift key character mappings for enhanced input
+export const shiftMappings = {
+  // Numbers to symbols
+  '1': '!',
+  '2': '@',
+  '3': '#',
+  '4': '$',
+  '5': '%',
+  '6': '^',
+  '7': '&',
+  '8': '*',
+  '9': '(',
+  '0': ')',
+  
+  // Special Urdu characters for Shift combinations
+  'a': 'آ', // Alif with Madda
+  'i': 'إ', // Alif with Hamza below
+  'u': 'ؤ', // Waw with Hamza
+  'e': 'ئ', // Yeh with Hamza
+  'h': 'ح', // Heh
+  's': 'ص', // Sad
+  'd': 'ض', // Dad
+  't': 'ط', // Tah
+  'z': 'ظ', // Zah
+  'g': 'غ', // Ghain
+  'f': 'ف', // Feh
+  'q': 'ق', // Qaf
+  'k': 'ک', // Kaf
+  'l': 'ل', // Lam
+  'n': 'ں', // Noon Ghunna
+  'r': 'ڑ', // Reh with small tah
+  'y': 'ے', // Yeh
+  'w': 'ؤ', // Waw with Hamza
+  'm': 'ں', // Noon Ghunna
+  'b': 'ب', // Beh
+  'p': 'پ', // Peh
+  'j': 'ج', // Jeem
+  'c': 'چ', // Cheh
+  'v': 'و', // Waw
+  'x': 'خ', // Kheh
+  
+  // Punctuation
+  ',': '،', // Arabic comma
+  ';': '؛', // Arabic semicolon
+  '?': '؟', // Arabic question mark
+  
+  // Additional symbols
+  '-': '۔', // Urdu full stop
+  '.': '۔', // Urdu full stop
+  '/': '/', // Forward slash
+  '\\': '\\', // Backslash
+  '=': '=', // Equals
+  '+': '+', // Plus
+  '_': '_', // Underscore
+  '|': '|', // Pipe
+  '[': '[', // Left bracket
+  ']': ']', // Right bracket
+  '{': '{', // Left brace
+  '}': '}', // Right brace
+'"': '"', // Quote
+  "'": "'", // Apostrophe
+  '<': '<', // Less than
+  '>': '>' // Greater than
 };

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 const TextArea = forwardRef(({ 
   value, 
   onChange, 
+  fontSize = 1,
   placeholder = "یہاں اردو ٹائپ کریں...",
   className = '',
   ...props 
@@ -20,7 +21,8 @@ const TextArea = forwardRef(({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className={`urdu-textarea ${className}`}
+style={{ '--font-size-multiplier': fontSize }}
+        className={`urdu-textarea dynamic-font ${className}`}
         {...props}
       />
     </motion.div>
